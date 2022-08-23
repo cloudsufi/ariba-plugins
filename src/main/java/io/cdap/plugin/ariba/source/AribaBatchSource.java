@@ -64,7 +64,7 @@ public class AribaBatchSource extends BatchSource<NullWritable, StructuredRecord
 
   public AribaBatchSource(AribaPluginConfig pluginConfig) {
     this.pluginConfig = pluginConfig;
-    aribaServices = new AribaServices(pluginConfig);
+    aribaServices = new AribaServices(pluginConfig.getConnection());
   }
 
   @Override
@@ -115,7 +115,7 @@ public class AribaBatchSource extends BatchSource<NullWritable, StructuredRecord
   private Schema getOutputSchema() throws IOException, AribaException, InterruptedException {
     String token = aribaServices.getAccessToken();
     LOG.trace("Initiating Metadata Call To Ariba");
-    return aribaServices.buildOutputSchema(token);
+    return aribaServices.buildOutputSchema(token, pluginConfig.getViewTemplateName());
   }
 
   private void setJobForDataRead(BatchSourceContext context, Schema outputSchema) throws IOException {
