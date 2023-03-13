@@ -72,6 +72,7 @@ public class AribaServices {
 
   private static final String DOCUMENT_TYPE = "documentType";
   private static final String AUTHORIZATION = "Authorization";
+  private static final String API_KEY = "apiKey";
   private static final String ACCEPT = "Accept";
   private static final String POST = "POST";
   private static final String VIEW_TEMPLATE_NAME = "viewTemplateName";
@@ -269,7 +270,7 @@ public class AribaServices {
    * @param res {@code Response}
    * @return {@code AribaResponseContainer}
    */
-  public AribaResponseContainer tokenResponse(Response res) throws IOException {
+  private AribaResponseContainer tokenResponse(Response res) throws IOException {
     return AribaResponseContainer.builder()
       .httpStatusCode(res.code())
       .httpStatusMsg(res.message())
@@ -534,7 +535,7 @@ public class AribaServices {
   public Request buildDataRequest(URL endpoint, String accessToken) {
     return new Request.Builder()
       .addHeader(AUTHORIZATION, getAuthenticationKey(accessToken))
-      .addHeader(ResourceConstants.API_KEY, pluginConfig.getApiKey())
+      .addHeader(API_KEY, pluginConfig.getApiKey())
       .addHeader(ACCEPT, MediaType.APPLICATION_JSON)
       .get()
       .url(endpoint)
@@ -561,7 +562,7 @@ public class AribaServices {
    *
    * @return returns auth key
    */
-  public String getAuthenticationKey(String accessToken) {
+  private String getAuthenticationKey(String accessToken) {
     return String.format("Bearer %s", accessToken);
   }
 
@@ -632,7 +633,7 @@ public class AribaServices {
     return new Request.Builder().get()
       .url(endPoint)
       .addHeader(AUTHORIZATION, getAuthenticationKey(accessToken))
-      .addHeader(ResourceConstants.API_KEY, pluginConfig.getApiKey())
+      .addHeader(API_KEY, pluginConfig.getApiKey())
       .addHeader(ACCEPT, MediaType.APPLICATION_JSON)
       .build();
   }
@@ -804,7 +805,7 @@ public class AribaServices {
     }
     return new Request.Builder()
       .addHeader(AUTHORIZATION, getAuthenticationKey(getAccessToken()))
-      .addHeader(ResourceConstants.API_KEY, pluginConfig.getApiKey())
+      .addHeader(API_KEY, pluginConfig.getApiKey())
       .addHeader(ACCEPT, MediaType.APPLICATION_JSON)
       .method(POST, body)
       .url(endpoint)
@@ -877,7 +878,7 @@ public class AribaServices {
     return new Request.Builder().get()
       .url(endPoint)
       .addHeader(AUTHORIZATION, getAuthenticationKey(accessToken))
-      .addHeader(ResourceConstants.API_KEY, pluginConfig.getApiKey())
+      .addHeader(API_KEY, pluginConfig.getApiKey())
       .build();
   }
 
