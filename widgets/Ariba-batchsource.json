@@ -63,6 +63,22 @@
         },
         {
           "widget-type": "textbox",
+          "label": "Token Endpoint",
+          "name": "tokenURL",
+          "widget-attributes": {
+            "placeholder": "Token path of the Ariba API, for example, https://api.au.cloud.ariba.com"
+          }
+        },
+        {
+          "widget-type": "textbox",
+          "label": "API Endpoint",
+          "name": "baseURL",
+          "widget-attributes": {
+            "placeholder": "Base path of the Ariba API, for example, https://sandbox.api.sap.com"
+          }
+        },
+        {
+          "widget-type": "textbox",
           "label": "Ariba Client ID",
           "name": "clientId",
           "widget-attributes": {
@@ -83,14 +99,6 @@
           "name": "apiKey",
           "widget-attributes": {
             "placeholder": "Use any Application Key of an Application(s) you created in developer portal."
-          }
-        },
-        {
-          "widget-type": "textbox",
-          "label": "API Endpoint",
-          "name": "baseURL",
-          "widget-attributes": {
-            "placeholder": "Base path of the Ariba API, for example, https://sandbox.api.sap.com"
           }
         },
         {
@@ -119,6 +127,10 @@
               }
             ]
           }
+        },
+        {
+          "widget-type": "get-schema",
+          "widget-category": "plugin"
         }
       ]
     },
@@ -174,6 +186,10 @@
         {
           "type": "property",
           "name": "systemType"
+        },
+        {
+          "type": "property",
+          "name": "tokenURL"
         }
       ]
     },

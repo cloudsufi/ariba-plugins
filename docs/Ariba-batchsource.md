@@ -18,6 +18,7 @@ You can configure the following properties for the Ariba.
 
 **Reference Name:** Name used to uniquely identify this source for lineage,
 annotating metadata, etc.  
+**Token Endpoint (M)**:Token path of the Ariba API, for example, https://api.au.cloud.ariba.com.
 **API Endpoint (M)**: Base path of the Ariba API, for example, https://sandbox.api.sap.com.  
 **System Type**: Type of system the Ariba instance is running on: Production or Sandbox.  
 **Realm (M)**: Realm name from which the data is to be extracted, for example, S4VALL.   

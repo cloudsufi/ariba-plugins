@@ -222,26 +222,10 @@ public class AribaServices {
    */
   @VisibleForTesting
   protected URL generateTokenURL() {
-    String tokenUrl = String.format(HTTPS_PATH, fetchAuthURL());
+    String tokenUrl = pluginConfig.getTokenURL();
     HttpUrl.Builder builder = Objects.requireNonNull(HttpUrl.parse(tokenUrl))
       .newBuilder().addPathSegments(TOKEN_PATH_SEGMENT);
     return builder.build().url();
-  }
-
-  /**
-   * Fetches Authentication auth url from base url
-   * Base URL: http://openapi.au.cloud.ariba.com
-   * Auth URL: https://api.au.cloud.ariba.com
-   *
-   * @return auth url string
-   */
-  private String fetchAuthURL() {
-    Pattern urlPattern = Pattern.compile(URL_PATTERN);
-    Matcher matcher = urlPattern.matcher(pluginConfig.getBaseURL());
-    if (matcher.find()) {
-      return matcher.group(0);
-    }
-    return pluginConfig.getBaseURL();
   }
 
   /**
@@ -285,7 +269,7 @@ public class AribaServices {
    * @throws IOException any http client exceptions
    */
   @VisibleForTesting
-  Response httpAribaTokenCall(URL endpoint) throws IOException {
+  public Response httpAribaTokenCall(URL endpoint) throws IOException {
     OkHttpClient enhancedOkHttpClient = getConfiguredClient().build();
     Request req = buildTokenRequest(endpoint);
     // No API limit on this call
