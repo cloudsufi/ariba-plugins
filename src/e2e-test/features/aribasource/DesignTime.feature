@@ -18,7 +18,7 @@
 @Regression
 Feature: Ariba Source - Design time scenarios
 
-  @BATCH-TS-ARIBA-DSGN-01
+  @BATCH-TS-ARIBA-DSGN-01 @Required
   Scenario Outline: Verify user should be able to validate output schema for the plugin when System Type is prod
     When Open Datafusion Project to configure pipeline
     And Select plugin: "SAP Ariba" from the plugins list as: "Source"
