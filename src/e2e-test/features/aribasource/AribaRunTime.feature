@@ -18,7 +18,7 @@
 @Regression
 Feature: Ariba Source - Run time scenarios
 
-  @BATCH-TS-ARIBA-DSGN-RNTM-01 @BQ_SINK @FILE_PATH @BQ_SINK_CLEANUP @BQ_TEMP_CLEANUP
+  @BATCH-TS-ARIBA-DSGN-RNTM-01 @BQ_SINK @FILE_PATH @BQ_SINK_CLEANUP @BQ_TEMP_CLEANUP @Required
   Scenario: Verify data is transferred correctly to BQ for System Type prod
     When Open Datafusion Project to configure pipeline
     And Select plugin: "SAP Ariba" from the plugins list as: "Source"
